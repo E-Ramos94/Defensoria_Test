@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBcoordinador_RamosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="c_Empleado">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clave" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idPuesto" Type="int" Nullable="false" />
+    <Property Name="estaActivo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="c_Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="c_Puesto">
+    <Key>
+      <PropertyRef Name="idPuesto" />
+    </Key>
+    <Property Name="idPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="puesto" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="t_Requisiciones">
+    <Key>
+      <PropertyRef Name="idRequisicion" />
+    </Key>
+    <Property Name="idRequisicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="detalleRequisicion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="precioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="idEmpleadoSolicita" Type="int" Nullable="false" />
+    <Property Name="fechaSolicita" Type="datetime" Nullable="false" />
+    <Property Name="idEstado" Type="int" Nullable="false" />
+    <Property Name="fechaGraba" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_RequisicionesBitacora">
+    <Key>
+      <PropertyRef Name="idBitacoraReq" />
+    </Key>
+    <Property Name="idBitacoraReq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRequisicion" Type="int" />
+    <Property Name="idEstadoAnterior" Type="int" />
+    <Property Name="idEstadoNuevo" Type="int" />
+    <Property Name="fechaRegistro" Type="datetime" />
+    <Property Name="observacion" Type="varchar" MaxLength="200" />
+    <Property Name="idEmpleadoRegistra" Type="int" />
+  </EntityType>
+  <Association Name="fk_Empleado">
+    <End Role="c_Empleado" Type="Self.c_Empleado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEmpleadoSolicita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estado">
+    <End Role="c_Estado" Type="Self.c_Estado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Puesto">
+    <End Role="c_Puesto" Type="Self.c_Puesto" Multiplicity="1" />
+    <End Role="c_Empleado" Type="Self.c_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Puesto">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="c_Empleado">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Requisicion">
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="0..1" />
+    <End Role="t_RequisicionesBitacora" Type="Self.t_RequisicionesBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Requisiciones">
+        <PropertyRef Name="idRequisicion" />
+      </Principal>
+      <Dependent Role="t_RequisicionesBitacora">
+        <PropertyRef Name="idRequisicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Requisiciones_Empleado">
+    <End Role="c_Empleado" Type="Self.c_Empleado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEmpleadoSolicita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Requisiciones_Estado">
+    <End Role="c_Estado" Type="Self.c_Estado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RequisicionesBitacora_requisiciones">
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="0..1" />
+    <End Role="t_RequisicionesBitacora" Type="Self.t_RequisicionesBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Requisiciones">
+        <PropertyRef Name="idRequisicion" />
+      </Principal>
+      <Dependent Role="t_RequisicionesBitacora">
+        <PropertyRef Name="idRequisicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBcoordinador_RamosModelStoreContainer">
+    <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="c_Estado" EntityType="Self.c_Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="c_Puesto" EntityType="Self.c_Puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Requisiciones" EntityType="Self.t_Requisiciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_RequisicionesBitacora" EntityType="Self.t_RequisicionesBitacora" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Empleado" Association="Self.fk_Empleado">
+      <End Role="c_Empleado" EntitySet="c_Empleado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estado" Association="Self.fk_Estado">
+      <End Role="c_Estado" EntitySet="c_Estado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Puesto" Association="Self.fk_Puesto">
+      <End Role="c_Puesto" EntitySet="c_Puesto" />
+      <End Role="c_Empleado" EntitySet="c_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Requisicion" Association="Self.fk_Requisicion">
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+      <End Role="t_RequisicionesBitacora" EntitySet="t_RequisicionesBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="Requisiciones_Empleado" Association="Self.Requisiciones_Empleado">
+      <End Role="c_Empleado" EntitySet="c_Empleado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
+    <AssociationSet Name="Requisiciones_Estado" Association="Self.Requisiciones_Estado">
+      <End Role="c_Estado" EntitySet="c_Estado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
+    <AssociationSet Name="RequisicionesBitacora_requisiciones" Association="Self.RequisicionesBitacora_requisiciones">
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+      <End Role="t_RequisicionesBitacora" EntitySet="t_RequisicionesBitacora" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

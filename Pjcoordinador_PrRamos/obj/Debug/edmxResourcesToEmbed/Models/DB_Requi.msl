@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModelStoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities">
+    <EntitySetMapping Name="c_Empleado">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.c_Empleado">
+        <MappingFragment StoreEntitySet="c_Empleado">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="estaActivo" ColumnName="estaActivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="c_Estado">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.c_Estado">
+        <MappingFragment StoreEntitySet="c_Estado">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="c_Puesto">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.c_Puesto">
+        <MappingFragment StoreEntitySet="c_Puesto">
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Requisiciones">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.t_Requisiciones">
+        <MappingFragment StoreEntitySet="t_Requisiciones">
+          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+          <ScalarProperty Name="detalleRequisicion" ColumnName="detalleRequisicion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="idEmpleadoSolicita" ColumnName="idEmpleadoSolicita" />
+          <ScalarProperty Name="fechaSolicita" ColumnName="fechaSolicita" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="fechaGraba" ColumnName="fechaGraba" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_RequisicionesBitacora">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.t_RequisicionesBitacora">
+        <MappingFragment StoreEntitySet="t_RequisicionesBitacora">
+          <ScalarProperty Name="idBitacoraReq" ColumnName="idBitacoraReq" />
+          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+          <ScalarProperty Name="idEstadoAnterior" ColumnName="idEstadoAnterior" />
+          <ScalarProperty Name="idEstadoNuevo" ColumnName="idEstadoNuevo" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="idEmpleadoRegistra" ColumnName="idEmpleadoRegistra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
