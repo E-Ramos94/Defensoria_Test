@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBcoordinador_RamosModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBcoordinador_Ramos.dbo.View_requisiciones' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_requisiciones">
+          <Key>
+            <PropertyRef Name="idRequisicion" />
+            <PropertyRef Name="detalleRequisicion" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precioUnitario" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="usuario" />
+            <PropertyRef Name="fechaSolicita" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="idEmpleadoSolicita" />
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idRequisicion" Type="int" Nullable="false" />
+          <Property Name="detalleRequisicion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="precioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaSolicita" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaGraba" Type="datetime" />
+          <Property Name="idEmpleadoSolicita" Type="int" Nullable="false" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBcoordinador_RamosModel2StoreContainer">
+          <EntitySet Name="View_requisiciones" EntityType="Self.View_requisiciones" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_requisiciones].[idRequisicion] AS [idRequisicion], 
+    [View_requisiciones].[detalleRequisicion] AS [detalleRequisicion], 
+    [View_requisiciones].[cantidad] AS [cantidad], 
+    [View_requisiciones].[precioUnitario] AS [precioUnitario], 
+    [View_requisiciones].[total] AS [total], 
+    [View_requisiciones].[usuario] AS [usuario], 
+    [View_requisiciones].[fechaSolicita] AS [fechaSolicita], 
+    [View_requisiciones].[estado] AS [estado], 
+    [View_requisiciones].[fechaGraba] AS [fechaGraba], 
+    [View_requisiciones].[idEmpleadoSolicita] AS [idEmpleadoSolicita], 
+    [View_requisiciones].[idEstado] AS [idEstado]
+    FROM [dbo].[View_requisiciones] AS [View_requisiciones]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBcoordinador_RamosModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="View_requisiciones">
+          <Key>
+            <PropertyRef Name="idRequisicion" />
+            <PropertyRef Name="detalleRequisicion" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="precioUnitario" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="usuario" />
+            <PropertyRef Name="fechaSolicita" />
+            <PropertyRef Name="estado" />
+            <PropertyRef Name="idEmpleadoSolicita" />
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idRequisicion" Type="Int32" Nullable="false" />
+          <Property Name="detalleRequisicion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="precioUnitario" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaSolicita" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaGraba" Type="DateTime" Precision="3" />
+          <Property Name="idEmpleadoSolicita" Type="Int32" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBcoordinador_RamosEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="View_requisiciones" EntityType="Self.View_requisiciones" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModel2StoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities4">
+          <EntitySetMapping Name="View_requisiciones">
+            <EntityTypeMapping TypeName="DBcoordinador_RamosModel2.View_requisiciones">
+              <MappingFragment StoreEntitySet="View_requisiciones">
+                <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+                <ScalarProperty Name="detalleRequisicion" ColumnName="detalleRequisicion" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="fechaSolicita" ColumnName="fechaSolicita" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechaGraba" ColumnName="fechaGraba" />
+                <ScalarProperty Name="idEmpleadoSolicita" ColumnName="idEmpleadoSolicita" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

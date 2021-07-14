@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBcoordinador_RamosModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBcoordinador_Ramos.dbo.View_requisiciones' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="View_requisiciones">
+    <Key>
+      <PropertyRef Name="idRequisicion" />
+      <PropertyRef Name="detalleRequisicion" />
+      <PropertyRef Name="cantidad" />
+      <PropertyRef Name="precioUnitario" />
+      <PropertyRef Name="total" />
+      <PropertyRef Name="usuario" />
+      <PropertyRef Name="fechaSolicita" />
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="idEmpleadoSolicita" />
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idRequisicion" Type="int" Nullable="false" />
+    <Property Name="detalleRequisicion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="precioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaSolicita" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaGraba" Type="datetime" />
+    <Property Name="idEmpleadoSolicita" Type="int" Nullable="false" />
+    <Property Name="idEstado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DBcoordinador_RamosModel2StoreContainer">
+    <EntitySet Name="View_requisiciones" EntityType="Self.View_requisiciones" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_requisiciones].[idRequisicion] AS [idRequisicion], 
+    [View_requisiciones].[detalleRequisicion] AS [detalleRequisicion], 
+    [View_requisiciones].[cantidad] AS [cantidad], 
+    [View_requisiciones].[precioUnitario] AS [precioUnitario], 
+    [View_requisiciones].[total] AS [total], 
+    [View_requisiciones].[usuario] AS [usuario], 
+    [View_requisiciones].[fechaSolicita] AS [fechaSolicita], 
+    [View_requisiciones].[estado] AS [estado], 
+    [View_requisiciones].[fechaGraba] AS [fechaGraba], 
+    [View_requisiciones].[idEmpleadoSolicita] AS [idEmpleadoSolicita], 
+    [View_requisiciones].[idEstado] AS [idEstado]
+    FROM [dbo].[View_requisiciones] AS [View_requisiciones]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

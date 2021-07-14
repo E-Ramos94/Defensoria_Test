@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModel2StoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities4">
+    <EntitySetMapping Name="View_requisiciones">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel2.View_requisiciones">
+        <MappingFragment StoreEntitySet="View_requisiciones">
+          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+          <ScalarProperty Name="detalleRequisicion" ColumnName="detalleRequisicion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fechaSolicita" ColumnName="fechaSolicita" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fechaGraba" ColumnName="fechaGraba" />
+          <ScalarProperty Name="idEmpleadoSolicita" ColumnName="idEmpleadoSolicita" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

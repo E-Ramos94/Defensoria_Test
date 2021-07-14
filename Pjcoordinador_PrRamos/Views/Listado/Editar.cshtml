@@ -1,0 +1,61 @@
+﻿@model Pjcoordinador_PrRamos.Models.ViewModels.NuevoViewModel
+@{
+    ViewBag.Title = "Editar";
+    ViewBag.cant = 0;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Editar", "Listado", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(d => d.idRequisicion)
+            <div>
+                @Html.LabelFor(d => d.fechaSolicita)<br />
+                @Html.EditorFor(d => d.fechaSolicita, "", new { @class = "form-control" })<br /><br />
+                @Html.ValidationMessageFor(d => d.fechaSolicita, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.detalleRequisicion)
+                @Html.TextBoxFor(d => d.detalleRequisicion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.detalleRequisicion, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.cantidad)
+                @Html.TextBoxFor(d => d.cantidad, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.cantidad, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.precioUnitaro)
+                @Html.TextBoxFor(d => d.precioUnitaro, "", new { @class = "form-control", @onkeypress = "keypresshandle(event);" })
+                @Html.ValidationMessageFor(d => d.precioUnitaro, null, new { @class = "red" })
+            </div>
+            <div>
+                @*@Html.LabelFor(d => d.total)
+                    @Html.TextBoxFor(d => d.total, "", new { @class = "form-control", @readonly = "readonly" })*@
+                @Html.LabelFor(d => d.total)
+                @Html.TextBoxFor(d => d.total, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.total, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.idEmpleadoSolicita)
+                @Html.TextBoxFor(d => d.idEmpleadoSolicita, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.idEmpleadoSolicita, null, new { @class = "red" })
+            </div>
+            <br />
+            <div style="text-align:right">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+    </div>
+    <script>
+    function keypresshandle(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            alert("Enter was pressed was pressed");
+        }
+    }
+    </script>
+}
+
