@@ -22,6 +22,6 @@ namespace Pjcoordinador_PrRamos.Models
         public int idEmpleadoSolicita { get; set; }
         public System.DateTime fechaSolicita { get; set; }
         public int idEstado { get; set; }
-        public Nullable<System.DateTime> fechaGraba { get; set; }
+        public System.DateTime fechaGraba { get; set; }
     }
 }

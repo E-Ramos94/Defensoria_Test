@@ -202,8 +202,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_Emp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB_Vista.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Vista.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Vista.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Vista.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Vista.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Vista.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ListadoController.cs" />
     <Compile Include="Models\t_Requisiciones.cs">
       <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\ListadoViewModel.cs" />
+    <Compile Include="Models\ViewModels\NuevoViewModel.cs" />
+    <Compile Include="Models\View_requisiciones.cs">
+      <DependentUpon>DB_Vista.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -235,6 +256,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB_Emp.edmx</DependentUpon>
       <LastGenOutput>DB_Emp.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_Vista.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Vista.edmx</DependentUpon>
+      <LastGenOutput>DB_Vista.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_Vista.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Vista.edmx</DependentUpon>
+      <LastGenOutput>DB_Vista.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -271,6 +302,13 @@
     <Content Include="Models\DB_Emp.edmx.diagram">
       <DependentUpon>DB_Emp.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\DB_Vista.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_Vista.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB_Vista.edmx.diagram">
+      <DependentUpon>DB_Vista.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -291,6 +329,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Listado\Index.cshtml" />
+    <Content Include="Views\Listado\Nuevo.cshtml" />
+    <Content Include="Views\Listado\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
