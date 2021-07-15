@@ -1,7 +1,7 @@
 ﻿@model List<Pjcoordinador_PrRamos.Models.ViewModels.ListadoViewModel>
 @{
     ViewBag.Title = "Listado de Requisiciones";
-    ViewBag.puesto = 2;
+    int puesto = (int)System.Web.HttpContext.Current.Session["IdPuesto"];
 }
 
 <h2>@ViewBag.Title</h2>
@@ -37,12 +37,12 @@
             <td>@oElemento.Estado</td>
             <td>@oElemento.fechaGrabada</td>
             <td>
-                @if (ViewBag.puesto == 1)
+                @if (puesto == 1)
                 {
                     <a class="btn btn-default" href="~/Listado/Editar/@oElemento.idRequisicion">Editar</a>
                     <a class="btn btn-danger" href="~/Listado/Eliminar/@oElemento.idRequisicion">Eliminar</a>
                 }
-                else if (ViewBag.puesto == 2)
+                else if (puesto == 2)
                 {
                     <a class="btn btn-default" href="~/Listado/Editar/@oElemento.idRequisicion">Editar</a>
                     <a class="btn btn-danger" href="~/Listado/Eliminar/@oElemento.idRequisicion">Eliminar</a>

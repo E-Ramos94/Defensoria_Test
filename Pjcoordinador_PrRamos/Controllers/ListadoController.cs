@@ -16,7 +16,12 @@ namespace Pjcoordinador_PrRamos.Models
             List<ListadoViewModel> lst;
             using (DBcoordinador_RamosEntities4 db = new DBcoordinador_RamosEntities4())
             {
+                int userid = (int)System.Web.HttpContext.Current.Session["UserId"];
+                int puesto = (int)System.Web.HttpContext.Current.Session["IdPuesto"];
+                //lst = (from d in db.View_requisiciones
+                //       select new ListadoViewModel
                 lst = (from d in db.View_requisiciones
+                       where d.idEmpleadoSolicita == userid
                        select new ListadoViewModel
                        {
                            idRequisicion = d.idRequisicion,
@@ -134,6 +139,53 @@ namespace Pjcoordinador_PrRamos.Models
                 db.SaveChanges();
             }
             return Redirect("~/Listado/");
+        }
+
+        public ActionResult Revision(int Id)
+        {
+            NuevoViewModel model = new NuevoViewModel();
+            using (DBcoordinador_RamosEntities2 db = new DBcoordinador_RamosEntities2())
+            {
+                var oRequi = db.t_Requisiciones.Find(Id);
+                model.idRequisicion = oRequi.idRequisicion;
+                model.detalleRequisicion = oRequi.detalleRequisicion;
+                model.cantidad = oRequi.cantidad;
+                model.precioUnitaro = oRequi.precioUnitario;
+                model.total = oRequi.total;
+                model.fechaSolicita = oRequi.fechaSolicita;
+                model.idEmpleadoSolicita = oRequi.idEmpleadoSolicita;
+                model.idEstado = oRequi.idEstado;
+
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Revision(NuevoViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (DBcoordinador_RamosEntities2 db = new DBcoordinador_RamosEntities2())
+                    {
+                        var oRequi = db.t_Requisiciones.Find(model.idRequisicion);
+                        oRequi.idEstado = model.idEstado;
+                        oRequi.fechaGraba = DateTime.Now;
+
+                        db.Entry(oRequi).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                    return Redirect("~/Listado/");
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

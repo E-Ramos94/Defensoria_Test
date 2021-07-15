@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBcoordinador_RamosModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBcoordinador_RamosModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="c_Empleado">
           <Key>
             <PropertyRef Name="idEmpleado" />
@@ -16,30 +16,31 @@
           <Property Name="clave" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idPuesto" Type="int" Nullable="false" />
           <Property Name="estaActivo" Type="bit" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="DBcoordinador_RamosModel1StoreContainer">
           <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBcoordinador_RamosModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBcoordinador_RamosEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="c_Empleado" EntityType="DBcoordinador_RamosModel1.c_Empleado" />
+        </EntityContainer>
         <EntityType Name="c_Empleado">
           <Key>
             <PropertyRef Name="idEmpleado" />
           </Key>
           <Property Name="idEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idPuesto" Type="Int32" Nullable="false" />
           <Property Name="estaActivo" Type="Boolean" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="DBcoordinador_RamosEntities3" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -49,13 +50,14 @@
           <EntitySetMapping Name="c_Empleado">
             <EntityTypeMapping TypeName="DBcoordinador_RamosModel1.c_Empleado">
               <MappingFragment StoreEntitySet="c_Empleado">
-                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
-                <ScalarProperty Name="nombres" ColumnName="nombres" />
-                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+                <ScalarProperty Name="token" ColumnName="token" />
                 <ScalarProperty Name="estaActivo" ColumnName="estaActivo" />
+                <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

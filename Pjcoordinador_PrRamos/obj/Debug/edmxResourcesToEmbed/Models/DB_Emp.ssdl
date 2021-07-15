@@ -11,6 +11,7 @@
     <Property Name="clave" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="idPuesto" Type="int" Nullable="false" />
     <Property Name="estaActivo" Type="bit" Nullable="false" />
+    <Property Name="token" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="DBcoordinador_RamosModel1StoreContainer">
     <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" Schema="dbo" store:Type="Tables" />

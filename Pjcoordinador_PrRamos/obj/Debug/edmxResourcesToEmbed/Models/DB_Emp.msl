@@ -4,13 +4,14 @@
     <EntitySetMapping Name="c_Empleado">
       <EntityTypeMapping TypeName="DBcoordinador_RamosModel1.c_Empleado">
         <MappingFragment StoreEntitySet="c_Empleado">
-          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
-          <ScalarProperty Name="nombres" ColumnName="nombres" />
-          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-          <ScalarProperty Name="clave" ColumnName="clave" />
-          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="token" ColumnName="token" />
           <ScalarProperty Name="estaActivo" ColumnName="estaActivo" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -21,5 +21,6 @@ namespace Pjcoordinador_PrRamos.Models
         public string clave { get; set; }
         public int idPuesto { get; set; }
         public bool estaActivo { get; set; }
+        public string token { get; set; }
     }
 }

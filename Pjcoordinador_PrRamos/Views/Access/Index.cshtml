@@ -1,0 +1,45 @@
+﻿@model Pjcoordinador_PrRamos.Models.c_Empleado
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <form id="frm">
+        <div class="col-lg-6 col-lg-offset-3">
+            Usuario
+            <input type="text" name="user" />
+            Password
+            <input type="password" name="password" />
+            <input type="submit" class="btn btn-success" value="Entrar" />
+        </div>
+    </form>
+</div>
+
+@{
+    var a = 3;
+}
+
+@section scripts
+{
+    <script>
+    $(document).ready(function () {
+        $("#frm").submit(function (e) {
+            e.preventDefault();
+
+            url = "@Url.Content("~/Access/Enter")"
+            parametros = $(this).serialize();
+
+            $.post(url, parametros, function (data) {
+
+                if (data == "1") {
+                    document.location.href = "@Url.Content("~/Listado/Index/")"
+                } else {
+                    alert(data)
+                }
+            })
+        })
+    })
+    </script>
+}
