@@ -4,10 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fc85f257a27d4b54b2bd2c79e521166c" Name="Diagram1">
-        <EntityTypeShape EntityType="DBcoordinador_RamosModel1.c_Empleado" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="DBcoordinador_RamosModel1.c_Puesto" Width="1.5" PointX="0.75" PointY="1.5" />
-        <AssociationConnector Association="DBcoordinador_RamosModel1.fk_Puesto" />
+      <Diagram DiagramId="df1136b217c34d6b9ca97fd5b6d6fe96" Name="Diagram1">
+        <EntityTypeShape EntityType="DBcoordinador_RamosModel3.t_RequisicionesBitacora" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

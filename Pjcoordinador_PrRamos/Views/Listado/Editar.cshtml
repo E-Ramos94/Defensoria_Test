@@ -28,7 +28,7 @@
             </div>
             <div>
                 @Html.LabelFor(d => d.precioUnitaro)
-                @Html.TextBoxFor(d => d.precioUnitaro, "", new { @class = "form-control", @onkeypress = "keypresshandle(event);" })
+                @Html.TextBoxFor(d => d.precioUnitaro, "", new { @class = "form-control", @onfocusout = "calcular();" })
                 @Html.ValidationMessageFor(d => d.precioUnitaro, null, new { @class = "red" })
             </div>
             <div>
@@ -38,11 +38,6 @@
                 @Html.TextBoxFor(d => d.total, "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(d => d.total, null, new { @class = "red" })
             </div>
-            <div>
-                @Html.LabelFor(d => d.idEmpleadoSolicita)
-                @Html.TextBoxFor(d => d.idEmpleadoSolicita, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.idEmpleadoSolicita, null, new { @class = "red" })
-            </div>
             <br />
             <div style="text-align:right">
                 <input value="Guardar" class="btn btn-primary" type="submit" />
@@ -50,12 +45,16 @@
         </div>
     </div>
     <script>
-    function keypresshandle(e) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            alert("Enter was pressed was pressed");
+        function calcular() {
+            var cant = document.getElementById('cantidad').value;
+            var precio = document.getElementById('precioUnitaro').value;
+
+            var total = parseFloat(cant) * parseFloat(precio)
+
+            $("#total").val(total);
+            $("#total").change();
+
         }
-    }
     </script>
 }
 

@@ -13,7 +13,31 @@
     <Property Name="estaActivo" Type="bit" Nullable="false" />
     <Property Name="token" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="c_Puesto">
+    <Key>
+      <PropertyRef Name="idPuesto" />
+    </Key>
+    <Property Name="idPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="puesto" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_Puesto">
+    <End Role="c_Puesto" Type="Self.c_Puesto" Multiplicity="1" />
+    <End Role="c_Empleado" Type="Self.c_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Puesto">
+        <PropertyRef Name="idPuesto" />
+      </Principal>
+      <Dependent Role="c_Empleado">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DBcoordinador_RamosModel1StoreContainer">
     <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="c_Puesto" EntityType="Self.c_Puesto" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Puesto" Association="Self.fk_Puesto">
+      <End Role="c_Puesto" EntitySet="c_Puesto" />
+      <End Role="c_Empleado" EntitySet="c_Empleado" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

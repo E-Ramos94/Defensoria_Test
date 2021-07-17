@@ -18,8 +18,32 @@
           <Property Name="estaActivo" Type="bit" Nullable="false" />
           <Property Name="token" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="c_Puesto">
+          <Key>
+            <PropertyRef Name="idPuesto" />
+          </Key>
+          <Property Name="idPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="puesto" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Puesto">
+          <End Role="c_Puesto" Type="Self.c_Puesto" Multiplicity="1" />
+          <End Role="c_Empleado" Type="Self.c_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_Puesto">
+              <PropertyRef Name="idPuesto" />
+            </Principal>
+            <Dependent Role="c_Empleado">
+              <PropertyRef Name="idPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBcoordinador_RamosModel1StoreContainer">
           <EntitySet Name="c_Empleado" EntityType="Self.c_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_Puesto" EntityType="Self.c_Puesto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Puesto" Association="Self.fk_Puesto">
+            <End Role="c_Puesto" EntitySet="c_Puesto" />
+            <End Role="c_Empleado" EntitySet="c_Empleado" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -27,6 +51,11 @@
       <Schema Namespace="DBcoordinador_RamosModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBcoordinador_RamosEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="c_Empleado" EntityType="DBcoordinador_RamosModel1.c_Empleado" />
+          <EntitySet Name="c_Puesto" EntityType="DBcoordinador_RamosModel1.c_Puesto" />
+          <AssociationSet Name="fk_Puesto" Association="DBcoordinador_RamosModel1.fk_Puesto">
+            <End Role="c_Puesto" EntitySet="c_Puesto" />
+            <End Role="c_Empleado" EntitySet="c_Empleado" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="c_Empleado">
           <Key>
@@ -40,7 +69,28 @@
           <Property Name="idPuesto" Type="Int32" Nullable="false" />
           <Property Name="estaActivo" Type="Boolean" Nullable="false" />
           <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="c_Puesto" Relationship="DBcoordinador_RamosModel1.fk_Puesto" FromRole="c_Empleado" ToRole="c_Puesto" />
         </EntityType>
+        <EntityType Name="c_Puesto">
+          <Key>
+            <PropertyRef Name="idPuesto" />
+          </Key>
+          <Property Name="idPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="puesto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="c_Empleado" Relationship="DBcoordinador_RamosModel1.fk_Puesto" FromRole="c_Puesto" ToRole="c_Empleado" />
+        </EntityType>
+        <Association Name="fk_Puesto">
+          <End Type="DBcoordinador_RamosModel1.c_Puesto" Role="c_Puesto" Multiplicity="1" />
+          <End Type="DBcoordinador_RamosModel1.c_Empleado" Role="c_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_Puesto">
+              <PropertyRef Name="idPuesto" />
+            </Principal>
+            <Dependent Role="c_Empleado">
+              <PropertyRef Name="idPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -58,6 +108,14 @@
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_Puesto">
+            <EntityTypeMapping TypeName="DBcoordinador_RamosModel1.c_Puesto">
+              <MappingFragment StoreEntitySet="c_Puesto">
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

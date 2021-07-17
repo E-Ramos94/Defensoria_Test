@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBcoordinador_RamosModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_RequisicionesBitacora">
+    <Key>
+      <PropertyRef Name="idBitacoraReq" />
+    </Key>
+    <Property Name="idBitacoraReq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRequisicion" Type="int" />
+    <Property Name="idEstadoAnterior" Type="int" />
+    <Property Name="idEstadoNuevo" Type="int" />
+    <Property Name="fechaRegistro" Type="datetime" />
+    <Property Name="observacion" Type="varchar" MaxLength="200" />
+    <Property Name="idEmpleadoRegistra" Type="int" />
+  </EntityType>
+  <EntityContainer Name="DBcoordinador_RamosModel3StoreContainer">
+    <EntitySet Name="t_RequisicionesBitacora" EntityType="Self.t_RequisicionesBitacora" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

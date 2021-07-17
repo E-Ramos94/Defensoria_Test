@@ -23,5 +23,8 @@ namespace Pjcoordinador_PrRamos.Models
         public System.DateTime fechaSolicita { get; set; }
         public int idEstado { get; set; }
         public System.DateTime fechaGraba { get; set; }
+    
+        public virtual c_Estado c_Estado { get; set; }
+        public virtual c_Estado c_Estado1 { get; set; }
     }
 }

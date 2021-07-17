@@ -31,6 +31,7 @@ namespace Pjcoordinador_PrRamos.Models.ViewModels
         [Display(Name = "Empleado solicitante")]
         [Range(0, int.MaxValue, ErrorMessage = "Ingrese un numero de Id porfavor")]
         public int idEmpleadoSolicita { get; set; }
+        public string Estado { get; set; }
         public int idEstado { get; set; }
         [Required]
         [DataType(DataType.Date)]

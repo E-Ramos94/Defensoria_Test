@@ -1,0 +1,53 @@
+﻿@model Pjcoordinador_PrRamos.Models.ViewModels.RegistroViewModel
+@{
+    ViewBag.Title = "Registros";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Registros", "Access", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.nombre)<br />
+                @Html.EditorFor(d => d.nombre, "", new { @class = "form-control" })<br /><br />
+                @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.apellido)
+                @Html.TextBoxFor(d => d.apellido, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.apellido, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.usuario)
+                @Html.TextBoxFor(d => d.usuario, "", new { @class = "form-control", Value = ViewBag.cant })
+                @Html.ValidationMessageFor(d => d.usuario, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.clave)
+                @*@Html.TextBoxFor(d => d.precioUnitaro, "", new { @class = "form-control", @onkeypress = "keypresshandle(event);" })*@
+                @Html.PasswordFor(m => m.clave, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.clave, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.clave2)
+                @*@Html.TextBoxFor(d => d.precioUnitaro, "", new { @class = "form-control", @onkeypress = "keypresshandle(event);" })*@
+                @Html.PasswordFor(m => m.clave2, new { @class = "form-control"})
+                @Html.ValidationMessageFor(d => d.clave2, null, new { @class = "red" })
+            </div>
+            <div>
+                @*@Html.LabelFor(d => d.total)
+        @Html.TextBoxFor(d => d.total, "", new { @class = "form-control", @readonly = "readonly" })*@
+                @Html.LabelFor(d => d.puesto)
+                @Html.DropDownList("Puestos", items, "Seleccionar el puesto", new { @class = "form-control" })
+                @Html.HiddenFor(d => d.puesto)
+            </div>
+            <br />
+            <div style="text-align:right">
+                <input value="Registrar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+    </div>
+}

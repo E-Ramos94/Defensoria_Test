@@ -25,6 +25,7 @@ namespace Pjcoordinador_PrRamos.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<c_Estado> c_Estado { get; set; }
         public virtual DbSet<t_Requisiciones> t_Requisiciones { get; set; }
     }
 }

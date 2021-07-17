@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBcoordinador_RamosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="c_Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="t_Requisiciones">
     <Key>
       <PropertyRef Name="idRequisicion" />
@@ -14,7 +21,40 @@
     <Property Name="idEstado" Type="int" Nullable="false" />
     <Property Name="fechaGraba" Type="datetime" />
   </EntityType>
+  <Association Name="fk_Estado">
+    <End Role="c_Estado" Type="Self.c_Estado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Requisiciones_Estado">
+    <End Role="c_Estado" Type="Self.c_Estado" Multiplicity="1" />
+    <End Role="t_Requisiciones" Type="Self.t_Requisiciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="t_Requisiciones">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DBcoordinador_RamosModelStoreContainer">
+    <EntitySet Name="c_Estado" EntityType="Self.c_Estado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Requisiciones" EntityType="Self.t_Requisiciones" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Estado" Association="Self.fk_Estado">
+      <End Role="c_Estado" EntitySet="c_Estado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
+    <AssociationSet Name="Requisiciones_Estado" Association="Self.Requisiciones_Estado">
+      <End Role="c_Estado" EntitySet="c_Estado" />
+      <End Role="t_Requisiciones" EntitySet="t_Requisiciones" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

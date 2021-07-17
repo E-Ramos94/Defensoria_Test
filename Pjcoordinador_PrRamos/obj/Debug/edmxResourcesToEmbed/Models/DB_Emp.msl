@@ -15,5 +15,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="c_Puesto">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel1.c_Puesto">
+        <MappingFragment StoreEntitySet="c_Puesto">
+          <ScalarProperty Name="puesto" ColumnName="puesto" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

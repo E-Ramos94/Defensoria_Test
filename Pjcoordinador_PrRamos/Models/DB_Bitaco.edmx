@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBcoordinador_RamosModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_RequisicionesBitacora">
+          <Key>
+            <PropertyRef Name="idBitacoraReq" />
+          </Key>
+          <Property Name="idBitacoraReq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRequisicion" Type="int" />
+          <Property Name="idEstadoAnterior" Type="int" />
+          <Property Name="idEstadoNuevo" Type="int" />
+          <Property Name="fechaRegistro" Type="datetime" />
+          <Property Name="observacion" Type="varchar" MaxLength="200" />
+          <Property Name="idEmpleadoRegistra" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DBcoordinador_RamosModel3StoreContainer">
+          <EntitySet Name="t_RequisicionesBitacora" EntityType="Self.t_RequisicionesBitacora" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBcoordinador_RamosModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_RequisicionesBitacora">
+          <Key>
+            <PropertyRef Name="idBitacoraReq" />
+          </Key>
+          <Property Name="idBitacoraReq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRequisicion" Type="Int32" />
+          <Property Name="idEstadoAnterior" Type="Int32" />
+          <Property Name="idEstadoNuevo" Type="Int32" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idEmpleadoRegistra" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DBcoordinador_RamosEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_RequisicionesBitacora" EntityType="Self.t_RequisicionesBitacora" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModel3StoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities5">
+          <EntitySetMapping Name="t_RequisicionesBitacora">
+            <EntityTypeMapping TypeName="DBcoordinador_RamosModel3.t_RequisicionesBitacora">
+              <MappingFragment StoreEntitySet="t_RequisicionesBitacora">
+                <ScalarProperty Name="idBitacoraReq" ColumnName="idBitacoraReq" />
+                <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+                <ScalarProperty Name="idEstadoAnterior" ColumnName="idEstadoAnterior" />
+                <ScalarProperty Name="idEstadoNuevo" ColumnName="idEstadoNuevo" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="idEmpleadoRegistra" ColumnName="idEmpleadoRegistra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

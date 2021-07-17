@@ -13,10 +13,10 @@ namespace Pjcoordinador_PrRamos.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBcoordinador_RamosEntities3 : DbContext
+    public partial class DBcoordinador_RamosEntities5 : DbContext
     {
-        public DBcoordinador_RamosEntities3()
-            : base("name=DBcoordinador_RamosEntities3")
+        public DBcoordinador_RamosEntities5()
+            : base("name=DBcoordinador_RamosEntities5")
         {
         }
     
@@ -25,7 +25,6 @@ namespace Pjcoordinador_PrRamos.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<c_Empleado> c_Empleado { get; set; }
-        public virtual DbSet<c_Puesto> c_Puesto { get; set; }
+        public virtual DbSet<t_RequisicionesBitacora> t_RequisicionesBitacora { get; set; }
     }
 }

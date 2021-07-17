@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModel3StoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities5">
+    <EntitySetMapping Name="t_RequisicionesBitacora">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel3.t_RequisicionesBitacora">
+        <MappingFragment StoreEntitySet="t_RequisicionesBitacora">
+          <ScalarProperty Name="idBitacoraReq" ColumnName="idBitacoraReq" />
+          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
+          <ScalarProperty Name="idEstadoAnterior" ColumnName="idEstadoAnterior" />
+          <ScalarProperty Name="idEstadoNuevo" ColumnName="idEstadoNuevo" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="idEmpleadoRegistra" ColumnName="idEmpleadoRegistra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

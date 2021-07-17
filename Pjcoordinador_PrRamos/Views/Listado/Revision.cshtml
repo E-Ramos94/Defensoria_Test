@@ -1,6 +1,7 @@
 ﻿@model Pjcoordinador_PrRamos.Models.ViewModels.NuevoViewModel
 @{
     ViewBag.Title = "Revision";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -42,8 +43,16 @@
             </div>
             <div>
                 @Html.LabelFor(d => d.idEstado)
-                @Html.TextBoxFor(d => d.idEstado, "", new { @class = "form-control" })
+                @Html.TextBoxFor(d => d.idEstado, "", new { @class = "form-control", @readonly = "readonly" })
                 @Html.ValidationMessageFor(d => d.idEstado, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Estado)
+                @Html.DropDownList("Estados", items, "Seleccionar un estado", new { @class = "form-control" })
+                @Html.HiddenFor(d => d.Estado)
+                @*@Html.LabelFor(d => d.idEstado)
+        @Html.TextBoxFor(d => d.idEstado, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.idEstado, null, new { @class = "red" })*@
             </div>
             <br />
             <div style="text-align:right">

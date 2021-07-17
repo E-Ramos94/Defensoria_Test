@@ -12,17 +12,14 @@ namespace Pjcoordinador_PrRamos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class c_Empleado
+    public partial class t_RequisicionesBitacora
     {
-        public int idEmpleado { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public string usuario { get; set; }
-        public string clave { get; set; }
-        public int idPuesto { get; set; }
-        public bool estaActivo { get; set; }
-        public string token { get; set; }
-    
-        public virtual c_Puesto c_Puesto { get; set; }
+        public int idBitacoraReq { get; set; }
+        public Nullable<int> idRequisicion { get; set; }
+        public Nullable<int> idEstadoAnterior { get; set; }
+        public Nullable<int> idEstadoNuevo { get; set; }
+        public Nullable<System.DateTime> fechaRegistro { get; set; }
+        public string observacion { get; set; }
+        public Nullable<int> idEmpleadoRegistra { get; set; }
     }
 }

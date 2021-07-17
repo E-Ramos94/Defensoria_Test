@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBcoordinador_RamosModelStoreContainer" CdmEntityContainer="DBcoordinador_RamosEntities2">
+    <EntitySetMapping Name="c_Estado">
+      <EntityTypeMapping TypeName="DBcoordinador_RamosModel.c_Estado">
+        <MappingFragment StoreEntitySet="c_Estado">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Requisiciones">
       <EntityTypeMapping TypeName="DBcoordinador_RamosModel.t_Requisiciones">
         <MappingFragment StoreEntitySet="t_Requisiciones">
-          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
-          <ScalarProperty Name="detalleRequisicion" ColumnName="detalleRequisicion" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="idEmpleadoSolicita" ColumnName="idEmpleadoSolicita" />
-          <ScalarProperty Name="fechaSolicita" ColumnName="fechaSolicita" />
-          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
           <ScalarProperty Name="fechaGraba" ColumnName="fechaGraba" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="fechaSolicita" ColumnName="fechaSolicita" />
+          <ScalarProperty Name="idEmpleadoSolicita" ColumnName="idEmpleadoSolicita" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="detalleRequisicion" ColumnName="detalleRequisicion" />
+          <ScalarProperty Name="idRequisicion" ColumnName="idRequisicion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

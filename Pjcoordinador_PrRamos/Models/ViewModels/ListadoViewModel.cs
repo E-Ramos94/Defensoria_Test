@@ -18,5 +18,7 @@ namespace Pjcoordinador_PrRamos.Models.ViewModels
         public DateTime fechaGrabada { get; set; }
         public int idEmpleado { get; set; }
         public int idEstado { get; set; }
+
+        public string estado { get; set; }
     }
 }

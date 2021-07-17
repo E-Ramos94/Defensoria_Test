@@ -5,7 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d1c04dc1ef9646c08062b08106eaaeb7" Name="Diagram1">
-        <EntityTypeShape EntityType="DBcoordinador_RamosModel.t_Requisiciones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBcoordinador_RamosModel.c_Estado" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="DBcoordinador_RamosModel.t_Requisiciones" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="DBcoordinador_RamosModel.fk_Estado" />
+        <AssociationConnector Association="DBcoordinador_RamosModel.Requisiciones_Estado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

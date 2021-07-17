@@ -96,4 +96,3 @@ C:\Users\KIKE-PC\Desktop\Defensoria\Pjcoordinador_PrRamos\Pjcoordinador_PrRamos\
 C:\Users\KIKE-PC\Desktop\Defensoria\Pjcoordinador_PrRamos\Pjcoordinador_PrRamos\obj\Debug\Pjcoordinador_Ramos.csproj.CopyComplete
 C:\Users\KIKE-PC\Desktop\Defensoria\Pjcoordinador_PrRamos\Pjcoordinador_PrRamos\obj\Debug\Pjcoordinador_PrRamos.dll
 C:\Users\KIKE-PC\Desktop\Defensoria\Pjcoordinador_PrRamos\Pjcoordinador_PrRamos\obj\Debug\Pjcoordinador_PrRamos.pdb
-C:\Users\KIKE-PC\Desktop\Defensoria\Pjcoordinador_PrRamos\Pjcoordinador_PrRamos\obj\Debug\Pjcoordinador_Ramos.csprojAssemblyReference.cache

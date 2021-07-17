@@ -12,17 +12,18 @@ namespace Pjcoordinador_PrRamos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class c_Empleado
+    public partial class c_Puesto
     {
-        public int idEmpleado { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public string usuario { get; set; }
-        public string clave { get; set; }
-        public int idPuesto { get; set; }
-        public bool estaActivo { get; set; }
-        public string token { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public c_Puesto()
+        {
+            this.c_Empleado = new HashSet<c_Empleado>();
+        }
     
-        public virtual c_Puesto c_Puesto { get; set; }
+        public int idPuesto { get; set; }
+        public string puesto { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<c_Empleado> c_Empleado { get; set; }
     }
 }

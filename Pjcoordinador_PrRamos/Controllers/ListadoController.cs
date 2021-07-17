@@ -13,11 +13,13 @@ namespace Pjcoordinador_PrRamos.Models
         // GET: Listado
         public ActionResult Index()
         {
-            List<ListadoViewModel> lst;
+            List<ListadoViewModel> lst = null;
+            int userid = (int)Session["IdUser"];
+            int puesto = (int)Session["IdPuesto"];
+
+            if (puesto == 1) {
             using (DBcoordinador_RamosEntities4 db = new DBcoordinador_RamosEntities4())
             {
-                int userid = (int)System.Web.HttpContext.Current.Session["UserId"];
-                int puesto = (int)System.Web.HttpContext.Current.Session["IdPuesto"];
                 //lst = (from d in db.View_requisiciones
                 //       select new ListadoViewModel
                 lst = (from d in db.View_requisiciones
@@ -35,6 +37,26 @@ namespace Pjcoordinador_PrRamos.Models
                            fechaGrabada = d.fechaGraba
                        }).ToList();
             }
+            }
+            else if (puesto == 2)
+            {
+                using (DBcoordinador_RamosEntities4 db = new DBcoordinador_RamosEntities4())
+                {
+                    lst = (from d in db.View_requisiciones
+                           select new ListadoViewModel
+                           {
+                               idRequisicion = d.idRequisicion,
+                               detalleRequisicion = d.detalleRequisicion,
+                               cantidad = d.cantidad,
+                               precioUnitaro = d.precioUnitario,
+                               total = d.total,
+                               idEmpleadoSolicita = d.usuario,
+                               fechaSolicita = d.fechaSolicita,
+                               Estado = d.estado,
+                               fechaGrabada = d.fechaGraba
+                           }).ToList();
+                }
+            }
             return View(lst);
         }
 
@@ -46,6 +68,7 @@ namespace Pjcoordinador_PrRamos.Models
         [HttpPost]
         public ActionResult Nuevo(NuevoViewModel model)
         {
+            int userid = (int)Session["IdUser"];
             try
             {
                 if (ModelState.IsValid)
@@ -57,7 +80,7 @@ namespace Pjcoordinador_PrRamos.Models
                         oTabla.cantidad = model.cantidad;
                         oTabla.precioUnitario = model.precioUnitaro;
                         oTabla.total = model.total;
-                        oTabla.idEmpleadoSolicita = model.idEmpleadoSolicita;
+                        oTabla.idEmpleadoSolicita = userid;
                         oTabla.fechaSolicita = model.fechaSolicita;
                         oTabla.idEstado = 1;
                         oTabla.fechaGraba = DateTime.Now;
@@ -80,6 +103,7 @@ namespace Pjcoordinador_PrRamos.Models
         public ActionResult Editar(int Id)
         {
             NuevoViewModel model = new NuevoViewModel();
+            List<ListadoViewModel> lst = null;
             using (DBcoordinador_RamosEntities2 db = new DBcoordinador_RamosEntities2())
             {
                 var oRequi = db.t_Requisiciones.Find(Id);
@@ -89,15 +113,15 @@ namespace Pjcoordinador_PrRamos.Models
                 model.precioUnitaro = oRequi.precioUnitario;
                 model.total = oRequi.total;
                 model.fechaSolicita = oRequi.fechaSolicita;
-                model.idEmpleadoSolicita = oRequi.idEmpleadoSolicita;
-
             }
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Editar(NuevoViewModel model)
         {
+            int userid = (int)Session["IdUser"];
             try
             {
                 if (ModelState.IsValid)
@@ -109,7 +133,7 @@ namespace Pjcoordinador_PrRamos.Models
                         oRequi.cantidad = model.cantidad;
                         oRequi.precioUnitario = model.precioUnitaro;
                         oRequi.total = model.total;
-                        oRequi.idEmpleadoSolicita = model.idEmpleadoSolicita;
+                        oRequi.idEmpleadoSolicita = userid;
                         oRequi.fechaSolicita = model.fechaSolicita;
                         oRequi.idEstado = 1;
                         oRequi.fechaGraba = DateTime.Now;
@@ -143,6 +167,7 @@ namespace Pjcoordinador_PrRamos.Models
 
         public ActionResult Revision(int Id)
         {
+            List<ListadoViewModel> lst = null;
             NuevoViewModel model = new NuevoViewModel();
             using (DBcoordinador_RamosEntities2 db = new DBcoordinador_RamosEntities2())
             {
@@ -156,24 +181,63 @@ namespace Pjcoordinador_PrRamos.Models
                 model.idEmpleadoSolicita = oRequi.idEmpleadoSolicita;
                 model.idEstado = oRequi.idEstado;
 
+                lst =
+                    (from d in db.c_Estado
+                     select new ListadoViewModel
+                     {
+                         idEstado = d.idEstado,
+                         estado = d.estado
+                     }).ToList();
+
             }
+
+            List<SelectListItem> item = lst.ConvertAll(d =>
+            {
+                return new SelectListItem()
+                {
+                    Text = d.estado.ToString(),
+                    Value = d.idEstado.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.items = item;
+
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Revision(NuevoViewModel model)
+        public ActionResult Revision(NuevoViewModel model, FormCollection form)
         {
             try
-            {
+            {                
                 if (ModelState.IsValid)
                 {
                     using (DBcoordinador_RamosEntities2 db = new DBcoordinador_RamosEntities2())
                     {
+                        string State = form["Estados"];
                         var oRequi = db.t_Requisiciones.Find(model.idRequisicion);
-                        oRequi.idEstado = model.idEstado;
+                        oRequi.idEstado = int.Parse(State);
                         oRequi.fechaGraba = DateTime.Now;
 
                         db.Entry(oRequi).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                    int userid = (int)Session["IdUser"];
+                    using (DBcoordinador_RamosEntities5 db = new DBcoordinador_RamosEntities5())
+                    {
+                        string State = form["Estados"];
+
+                        var oTabla = new t_RequisicionesBitacora();
+                        oTabla.idRequisicion = model.idRequisicion;
+                        oTabla.idEstadoAnterior = model.idEstado;
+                        oTabla.idEstadoNuevo = int.Parse(State);
+                        oTabla.fechaRegistro = DateTime.Now;
+                        oTabla.observacion = "SE HICIERON CAMBIOS";
+                        oTabla.idEmpleadoRegistra = userid;
+
+                        db.t_RequisicionesBitacora.Add(oTabla);
                         db.SaveChanges();
                     }
 

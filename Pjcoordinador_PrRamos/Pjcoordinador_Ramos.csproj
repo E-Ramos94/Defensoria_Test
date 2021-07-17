@@ -175,6 +175,12 @@
     <Compile Include="Models\c_Empleado.cs">
       <DependentUpon>DB_Emp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\c_Estado.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\c_Puesto.cs">
+      <DependentUpon>DB_Emp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,6 +195,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Bitaco.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Bitaco.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Bitaco.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Bitaco.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Bitaco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Bitaco.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DB_Emp.Context.cs">
       <AutoGen>True</AutoGen>
@@ -224,8 +245,12 @@
     <Compile Include="Models\t_Requisiciones.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\t_RequisicionesBitacora.cs">
+      <DependentUpon>DB_Bitaco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\ListadoViewModel.cs" />
     <Compile Include="Models\ViewModels\NuevoViewModel.cs" />
+    <Compile Include="Models\ViewModels\RegistroViewModel.cs" />
     <Compile Include="Models\View_requisiciones.cs">
       <DependentUpon>DB_Vista.tt</DependentUpon>
     </Compile>
@@ -249,6 +274,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB.edmx</DependentUpon>
       <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_Bitaco.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Bitaco.edmx</DependentUpon>
+      <LastGenOutput>DB_Bitaco.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_Bitaco.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Bitaco.edmx</DependentUpon>
+      <LastGenOutput>DB_Bitaco.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DB_Emp.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -312,6 +347,13 @@
     <Content Include="Models\DB_Vista.edmx.diagram">
       <DependentUpon>DB_Vista.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\DB_Bitaco.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_Bitaco.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB_Bitaco.edmx.diagram">
+      <DependentUpon>DB_Bitaco.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -337,6 +379,7 @@
     <Content Include="Views\Listado\Editar.cshtml" />
     <Content Include="Views\Access\Index.cshtml" />
     <Content Include="Views\Listado\Revision.cshtml" />
+    <Content Include="Views\Access\Registros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
